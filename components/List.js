@@ -10,6 +10,7 @@ const List = ({movies, navigation}) => {
         keyExtractor={item => item.imdbID}
         renderItem={({item}) => (
           <Card
+            id={item.imdbID}
             title={item.Title}
             posterUrl={item.Poster}
             plot={item.Plot}

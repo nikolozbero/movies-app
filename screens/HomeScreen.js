@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {View, StyleSheet} from 'react-native';
 
 import Form from '../components/Form';
 import List from '../components/List';
@@ -19,6 +18,7 @@ const Home = React.memo(({navigation}) => {
         });
         if (filteredData.length) {
           setMovies(prev => [...prev, ...filteredData]);
+          setInput('');
         }
       })
       .catch(err => console.log(err));

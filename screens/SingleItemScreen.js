@@ -1,12 +1,24 @@
 import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 
+import FavoriteButton from '../components/FavoriteButton';
+
 const SingleItem = ({route, navigation}) => {
-  const {title, posterUrl, plot} = route.params;
+  const {id, title, posterUrl, plot} = route.params;
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
       title: title,
+      headerRight: () => {
+        return (
+          <FavoriteButton
+            id={id}
+            title={title}
+            posterUrl={posterUrl}
+            plot={plot}
+          />
+        );
+      },
     });
   }, [navigation]);
 
@@ -34,6 +46,9 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 500,
+    borderWidth: 2,
+    borderColor: '#bcbcbc',
+    borderRadius: 12,
   },
 });
 

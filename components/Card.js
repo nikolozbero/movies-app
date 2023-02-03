@@ -1,9 +1,10 @@
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import React from 'react';
 
-const Card = React.memo(({title, posterUrl, plot, navigation}) => {
+const Card = React.memo(({id, title, posterUrl, plot, navigation}) => {
   const cardPressHandler = () => {
     navigation.navigate('SingleItem', {
+      id,
       title,
       plot,
       posterUrl,
