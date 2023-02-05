@@ -1,8 +1,16 @@
 import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import React from 'react';
 
+import {useDispatch} from 'react-redux';
+import {setFavoriteMovie} from '../redux/reducers/favorites/favorites.actions';
+
 const Card = React.memo(({id, title, posterUrl, plot, navigation}) => {
+  const dispatch = useDispatch();
+
+  const values = {id, title, posterUrl, plot, navigation};
+
   const cardPressHandler = () => {
+    dispatch(setFavoriteMovie(values));
     navigation.navigate('SingleItem', {
       id,
       title,

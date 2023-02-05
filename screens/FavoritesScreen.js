@@ -1,15 +1,17 @@
 import {Text, View, Image, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
-
-import {FavoriteContext} from '../context/context';
+import {selectFavorites} from '../redux/reducers/favorites/favorites.selectors';
+import {useSelector} from 'react-redux';
 
 function FavoritesScreen() {
-  const {favoriteMovies} = React.useContext(FavoriteContext);
+  const favoriteMovie = useSelector(selectFavorites);
+
+  console.log('favoriteMovie', favoriteMovie);
 
   return (
     <View style={styles.rootContainer}>
       <FlatList
-        data={favoriteMovies}
+        data={favoriteMovie.movies}
         keyExtractor={item => item.title}
         renderItem={({item}) => (
           <View style={styles.container}>
