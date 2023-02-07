@@ -7,7 +7,11 @@ const initialState = {
 const watched = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TO_WATCHED:
-      return {...state, watched: [...state.watched, action.payload]};
+      if (!state.watched.includes(action.payload)) {
+        return {...state, watched: [...state.watched, action.payload]};
+      } else {
+        return state;
+      }
     default:
       return state;
   }

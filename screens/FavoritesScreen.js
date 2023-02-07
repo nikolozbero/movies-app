@@ -1,9 +1,11 @@
-import {Text, View, Image, StyleSheet, FlatList} from 'react-native';
+import {Text, View, Image, StyleSheet, FlatList, Button} from 'react-native';
 import React from 'react';
 import {selectFavorites} from '../redux/reducers/favorites/favorites.selectors';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {removeFavoriteMovie} from '../redux/reducers/favorites/favorites.actions';
 
 function FavoritesScreen() {
+  const dispatch = useDispatch();
   const favoriteMovie = useSelector(selectFavorites);
 
   return (
@@ -16,6 +18,10 @@ function FavoritesScreen() {
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.plot}>{item.plot}</Text>
             <Image source={{uri: item.posterUrl}} style={styles.image} />
+            <Button
+              title="Remove from favorites"
+              onPress={() => dispatch(removeFavoriteMovie(item.id))}
+            />
           </View>
         )}
       />
