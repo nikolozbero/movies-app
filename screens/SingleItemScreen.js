@@ -1,4 +1,3 @@
-import {View, Text, Image, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 
 import FavoriteButton from '../components/FavoriteButton';

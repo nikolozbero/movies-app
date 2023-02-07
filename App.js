@@ -28,8 +28,8 @@ const Drawer = createDrawerNavigator();
 function DrawerNavigator() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={TabNavigator} />
-      <Drawer.Screen name="Watched" component={WatchedScreen} />
+      <Drawer.Screen name="Home screen" component={TabNavigator} />
+      <Drawer.Screen name="Watched screen" component={WatchedScreen} />
     </Drawer.Navigator>
   );
 }
@@ -42,7 +42,7 @@ function TabNavigator() {
         tabBarActiveTintColor: 'blue',
       }}>
       <Tab.Screen
-        name="Tab"
+        name="Home"
         component={HomeScreen}
         options={{
           tabBarIcon: ({color}) => {
