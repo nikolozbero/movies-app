@@ -18,32 +18,46 @@ import {Provider} from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
 import SingleItemScreen from './screens/SingleItemScreen';
 import FavoritesScreen from './screens/FavoritesScreen';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import WatchedScreen from './screens/WatchedScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={TabNavigator} />
+      <Drawer.Screen name="Watched" component={WatchedScreen} />
+    </Drawer.Navigator>
+  );
+}
 
 function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarActiveTintColor: 'blue',
       }}>
       <Tab.Screen
-        name="Home"
+        name="Tab"
         component={HomeScreen}
         options={{
-          tabBarIcon: () => {
-            return <Icon name="home" size={24} />;
+          tabBarIcon: ({color}) => {
+            return <Icon name="home" size={24} color={color} />;
           },
           tabBarLabelStyle: {fontSize: 14},
+          headerShown: false,
         }}
       />
       <Tab.Screen
         name="Favorites"
         component={FavoritesScreen}
         options={{
-          tabBarIcon: () => {
-            return <Icon name="star" size={24} />;
+          tabBarIcon: ({color}) => {
+            return <Icon name="star" size={24} color={color} />;
           },
           tabBarLabelStyle: {fontSize: 14},
         }}
@@ -57,7 +71,11 @@ function App() {
     <Provider store={store()}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="HomeScreen" component={TabNavigator} />
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{headerShown: false}}
+          />
           <Stack.Screen name="SingleItem" component={SingleItemScreen} />
         </Stack.Navigator>
       </NavigationContainer>

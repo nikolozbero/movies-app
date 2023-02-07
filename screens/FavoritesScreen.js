@@ -6,8 +6,6 @@ import {useSelector} from 'react-redux';
 function FavoritesScreen() {
   const favoriteMovie = useSelector(selectFavorites);
 
-  console.log('favoriteMovie', favoriteMovie);
-
   return (
     <View style={styles.rootContainer}>
       <FlatList
